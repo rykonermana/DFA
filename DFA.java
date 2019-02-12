@@ -43,7 +43,12 @@ public class DFA{
 		this.accept=accept;
 	}
 	
-	
+	/*
+	 * Determines whether given string is accepted or rejected by this DFA. 
+	 * Each state's activity counter is initialized to zero, then incremented by one each time the state is entered.
+	 * @param input - the input string; allows both "" and null to indicate the empty string
+	 * @return true if the string is in the language recognized by this DFA; false otherwise
+	 */
 	public boolean accepts(String input) {
 		/*
 		 * Initializes activity counter to zero for each state
@@ -117,9 +122,19 @@ public class DFA{
 		State current = traversal.get(input.substring(0, 1));
 		return current;
 	}
+	
+	/*
+	 * Retrieves the set of all states.
+	 * @return the states
+	 */
 	public Set<State> states(){
 		return states;
 	}
+	
+	/*
+	 * Retrieves the transition function of this DFA.
+	 * @return the transition function
+	 */
 	public Map<State,Map<String,State>> transitionFunction(){
 		return transition;
 	}
