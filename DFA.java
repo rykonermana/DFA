@@ -53,6 +53,9 @@ public class DFA{
 		}
 		String read = input;
 		State current = start;
+		if(current != null) {
+			current.increment();
+		}
 
 		/*
 		 * Traverse through the states based on the input
@@ -60,6 +63,10 @@ public class DFA{
 		while(read != null && read.length()>0) {
 			/* traverses through the state given the current string */
 			current = nextState(current,read);
+			/* Increment the activity counter upon traversing to it */
+			if(current != null) {
+				current.increment();
+			}
 			/* reduces the read string by one, the escape clause*/
 			read = read.substring(1);
 		}
